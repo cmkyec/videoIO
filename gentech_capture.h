@@ -16,14 +16,14 @@ public:
         bool open(const char* pFilePath);
 
 	// save decoded frame to queue
-        bool operator >> (CQueue *pVideoQueue = NULL, CQueue *pAudioQueue = NULL);
+        bool operator >> (CQueue *pVideoQueue = NULL);
 
         void close();
 private:
         AVFormatContext* m_pFormatCtx;
-        int m_videoStreamIndex, m_audioStreamIndex;
-        AVCodecContext *m_pVideoCodecCtx, *m_pAudioCodecCtx;
-	AVFrame *m_pVideoFrame, *m_pAudioFrame;
+        int m_videoStreamIndex;
+        AVCodecContext *m_pVideoCodecCtx;
+	AVFrame *m_pVideoFrame;
 };
 
 }
