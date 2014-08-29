@@ -8,7 +8,6 @@ CCapture::CCapture()
         m_videoStreamIndex = -1;
         m_pVideoCodecCtx = NULL;
 	m_pVideoFrame = NULL;
-	m_pAudioFrame = NULL;
 
         av_register_all();
 	avformat_network_init();
@@ -40,7 +39,7 @@ bool CCapture::open(const char* pFilePath)
 			break;
                 }
 	}
-        if (m_videoStreamIndex == -1 && m_audioStreamIndex == -1) {
+        if (m_videoStreamIndex == -1) {
                 printf("file: %s, can not find video stream or audio stream.\n", pFilePath);
 		close(); return false;
         }
@@ -62,7 +61,7 @@ bool CCapture::open(const char* pFilePath)
         }
 	m_pVideoFrame = av_frame_alloc();
 	if (!m_pVideoFrame) {
-		prinf("can not allocate video frame.\n");
+		printf("can not allocate video frame.\n");
 		close(); return false;
 	}
 	return true;

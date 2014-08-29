@@ -16,7 +16,7 @@ public:
         bool open(const char* pFilePath);
 
 	// save decoded frame to queue
-        bool operator >> (CQueue *pVideoQueue = NULL);
+        bool operator >> (CQueue *pVideoQueue);
 
         void close();
 private:

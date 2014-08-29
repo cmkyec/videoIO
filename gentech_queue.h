@@ -42,6 +42,8 @@ public:
 
 	void frame_queue_flush();
 
+	inline int size() { return m_queue.nb_frames; }
+
 protected:
 	void frame_queue_init();
 	
